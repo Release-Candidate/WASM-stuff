@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "ES2022",
+		"lib": [
+			"ES2022.RegExp",
+			"DOM"
+		],
+		"outDir": "out",
+		"sourceMap": true,
+		"strict": true,
+		"rootDir": ".",
+		"moduleResolution": "node",
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"esModuleInterop": true,
+		"noUnusedParameters": true
+	},
+	"include": [
+		"tests/**/*.ts"
+	],
+	"exclude": [
+		"node_modules",
+		"src"
+	]
+}

@@ -1,2 +1,3 @@
 # WASM-stuff
-WASM assembly programs.
+
+ Playing around with WebAssembly textual representation.

@@ -1,0 +1,17 @@
+{
+    "jobs": 8,
+    "package": "./package.json",
+    "parallel": true,
+    "require": [
+        "ts-node/register",
+        "tsconfig-paths/register"
+    ],
+    "spec": [
+        "tests/**/*_test.ts"
+    ],
+    "watch-files": [
+        "out/*.wasm",
+        "tests/**/*_test.ts"
+    ],
+    "trace-warnings": true
+}
