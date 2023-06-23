@@ -12,6 +12,12 @@
 			"task": "clean",
 			"problemMatcher": [],
 			"label": "yarn: clean"
+		},
+		{
+			"type": "yarn",
+			"task": "run-wasm",
+			"problemMatcher": [],
+			"label": "yarn: run-wasm"
 		}
 	]
 }
