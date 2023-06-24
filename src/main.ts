@@ -9,14 +9,14 @@
  * ==============================================================================
  */
 
-import { readFileSync } from "node:fs";
+import * as fs from "node:fs";
 
 /**
  * Main entry point.
  */
 export async function main() {
     const wasmModule = await WebAssembly.compile(
-        readFileSync("./out/test.wasm")
+        fs.readFileSync("./out/test.wasm")
     );
     const wasm = (await WebAssembly.instantiate(wasmModule)).exports;
     // eslint-disable-next-line no-unused-vars

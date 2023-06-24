@@ -18,6 +18,18 @@
 			"task": "run-wasm",
 			"problemMatcher": [],
 			"label": "yarn: run-wasm"
+		},
+		{
+			"type": "yarn",
+			"task": "test",
+			"problemMatcher": [],
+			"label": "yarn: test"
+		},
+		{
+			"type": "yarn",
+			"task": "optimize",
+			"problemMatcher": [],
+			"label": "yarn: optimize"
 		}
 	]
 }
