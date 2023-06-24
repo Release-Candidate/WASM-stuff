@@ -36,7 +36,7 @@
         "optimize": "mkdirp out && wasm-opt ./src/test.wat --name-types --all-features -O4 -o out/test.wasm",
         "test": "mocha",
         "run-wasm": "node --experimental-wasm-return-call --experimental-wasm-memory64 ./out/src/main.js",
-        "run-wasmedge": "wasmedge --enable-all --reactor ./out/test.wasm fac 5",
+        "run-wasmedge": "wasmedge --enable-all --enable-all-statistics --reactor ./out/test.wasm fac 5",
         "show-wasm": "wasm2wat out/test.wasm --enable-all --fold-exprs"
     }
 }

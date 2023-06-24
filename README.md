@@ -1,6 +1,6 @@
 # WASM-stuff
 
- Playing around with WebAssembly textual representation.
+ Playing around with WebAssembly textual representation (Webassembly assembler).
 
 ## Dependencies
 
@@ -20,8 +20,9 @@ Official WASM site with features of the main implementations: [Roadmap](https://
 ### Tail Calls
 
 - Chrome: >=112
-- Node: flag `--experimental-wasm-return-call`
+- Node: flag `--experimental-wasm-return-call` (not necessary any more)
 - Deno: flag `--v8-flags=--experimental-wasm-extended-const`
+- WASMEdge: option `--enable-tail-call`
 
 ### GC
 
@@ -39,3 +40,69 @@ Official WASM site with features of the main implementations: [Roadmap](https://
 - Chrome: >=74
 - Node: >=16.4
 - Deno: >=1.9
+- WASMEdge: option `--enable-threads`
+
+## WASMEdge: Running WASM Directly
+
+### Main Entry point
+
+`wasmedge` calls the function with exported name `_start` if no function name to call has been given at the command line.
+
+#### Example
+
+This WASMEdge command line
+
+```text
+wasmedge --enable-all --enable-all-statistics test.wasm
+```
+
+calls the `main` function of this WASM file (actually the compiled WASM binary of this source file) exportted as `_start`:
+
+```wasm
+(module
+ (func $fac (param $a i32) (result i32) ...)
+
+ (func $main (result i32)
+    (call $fac (i32.const 6)))
+  (export "_start" (func $main)))
+```
+
+## WASM Binaries to WAT
+
+To get the s-expression syntax in the right order, use the option `--fold-exprs` to `wasm2wat`.
+
+**Example:**
+
+S-Expr output with `--fold-exprs`:
+
+```text
+wasm2wat out/test.wasm --enable-all --fold-exprs
+```
+
+```wasm
+(module
+  (type (;0;) (func (param i32 i32) (result i32)))
+  (func (;0;) (type 0) (param i32 i32) (result i32)
+    (i32.add
+      (local.get 0)
+      (local.get 1))))
+```
+
+Flat output without:
+
+```text
+wasm2wat out/test.wasm --enable-all
+```
+
+```wasm
+(module
+  (type (;0;) (func (param i32 i32) (result i32)))
+  (func (;0;) (type 0) (param i32 i32) (result i32)
+    local.get 0
+    local.get 1
+    i32.add))
+```
+
+### WASM Compiler Output Online
+
+On the [Rust Playground](https://play.rust-lang.org/) WASM output can be enabled to the right of the `RUN` button.

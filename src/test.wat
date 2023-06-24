@@ -36,4 +36,9 @@
   (func $facTC (param $a i32) (result i32)
     (return_call $facTCHelper (i32.const 1) (local.get $a)))
   (export "facTC" (func $facTC))
+
+  (func $main (result i32)
+    (call $fac (i32.const 6)))
+  (export "_start" (func $main))
+
 )
