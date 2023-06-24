@@ -36,6 +36,12 @@
 			"task": "show-wasm",
 			"problemMatcher": [],
 			"label": "yarn: show-wasm"
+		},
+		{
+			"type": "yarn",
+			"task": "run-wasmedge",
+			"problemMatcher": [],
+			"label": "yarn: run-wasmedge"
 		}
 	]
 }

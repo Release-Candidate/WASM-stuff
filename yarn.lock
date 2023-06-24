@@ -3436,6 +3436,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"wasm-check@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "wasm-check@npm:2.1.2"
+  checksum: 3d555ac1b855e7028cf92990ca6ff860a45a73d1abfef64c502bb7911849ff098fa278d51d1f40d45da9f91c28410c886bb0577b1e0858d80ccb7b76d26c30f3
+  languageName: node
+  linkType: hard
+
 "wasm-test@workspace:.":
   version: 0.0.0-use.local
   resolution: "wasm-test@workspace:."
@@ -3461,6 +3468,7 @@ __metadata:
     ts-node: ^10.9.1
     tsconfig-paths: ^4.2.0
     typescript: ^5.1.3
+    wasm-check: ^2.1.2
   languageName: unknown
   linkType: soft
 
