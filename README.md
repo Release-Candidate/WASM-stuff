@@ -2,6 +2,20 @@
 
  Playing around with WebAssembly textual representation (Webassembly assembler).
 
+- [Dependencies](#dependencies)
+- [WASM Runtimes and Their Features](#wasm-runtimes-and-their-features)
+- [WASM Features](#wasm-features)
+  - [Tail Calls](#tail-calls)
+  - [GC](#gc)
+  - [64 Bit Memory](#64-bit-memory)
+  - [Threads](#threads)
+- [WASMEdge: Running WASM Directly](#wasmedge-running-wasm-directly)
+  - [Main Entry point](#main-entry-point)
+    - [Example](#example)
+- [WASM Binaries to WAT](#wasm-binaries-to-wat)
+  - [WASM Compiler Output Online](#wasm-compiler-output-online)
+- [License](#license)
+
 ## Dependencies
 
 - [WABT](https://github.com/WebAssembly/wabt) - `wat2wasm` to compile WAT (WASM textual representation) to binary WASM files. `wasm-merge` to merge WASM files into a single one.
@@ -106,3 +120,7 @@ wasm2wat out/test.wasm --enable-all
 ### WASM Compiler Output Online
 
 On the [Rust Playground](https://play.rust-lang.org/) WASM output can be enabled to the right of the `RUN` button.
+
+## License
+
+Everything in this repository **WASM-stuff** is licensed under the GPLv3 or later. See file [./LICENSE](./LICENSE) for details.
