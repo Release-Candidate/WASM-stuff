@@ -21,8 +21,8 @@
       (then (local.get $a))
       (else (i32.mul
               (local.get $a)
-              (call $fac (i32.sub (local.get $a) (i32.const 1))))))
-    )
+              (call $fac (i32.sub (local.get $a) (i32.const 1)))))))
+
   (export "fac" (func $fac))
 
   (func $facTCHelper (param $acc i32) (param $b i32) (result i32)
@@ -39,6 +39,6 @@
 
   (func $main (result i32)
     (call $fac (i32.const 6)))
-  (export "_start" (func $main))
 
+  (export "_start" (func $main))
 )

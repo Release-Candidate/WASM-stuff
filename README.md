@@ -18,8 +18,9 @@
 
 ## Dependencies
 
-- [WABT](https://github.com/WebAssembly/wabt) - `wat2wasm` to compile WAT (WASM textual representation) to binary WASM files. `wasm-merge` to merge WASM files into a single one.
-- [Binaryen](https://github.com/WebAssembly/binaryen) - `wasm-opt` to optimize the generated binary WASM file.
+- [WABT](https://github.com/WebAssembly/wabt) - `wat2wasm` to compile WAT (WASM textual representation) to binary WASM files. `wasm2wat` to disassemble binary WASM files (`.wasm`) to text format (`.wat`).
+- [Binaryen](https://github.com/WebAssembly/binaryen) - `wasm-opt` to optimize the generated binary WASM file. `wasm-merge` to merge WASM files into a single one.
+- [WASMEdge](https://github.com/WasmEdge/WasmEdge)
 
 ## WASM Runtimes and Their Features
 
