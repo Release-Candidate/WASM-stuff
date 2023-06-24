@@ -30,6 +30,12 @@
 			"task": "optimize",
 			"problemMatcher": [],
 			"label": "yarn: optimize"
+		},
+		{
+			"type": "yarn",
+			"task": "show-wasm",
+			"problemMatcher": [],
+			"label": "yarn: show-wasm"
 		}
 	]
 }

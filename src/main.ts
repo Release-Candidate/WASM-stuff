@@ -23,6 +23,10 @@ export async function main() {
     const wasmAdd = wasm.add as (a: number, b: number) => number;
     // eslint-disable-next-line no-console, no-magic-numbers
     console.log(`WASM add: ${wasmAdd(5, 4)}`);
+    // eslint-disable-next-line no-unused-vars
+    const wasmFacTC = wasm.facTC as (a: number) => number;
+    // eslint-disable-next-line no-console, no-magic-numbers
+    console.log(`WASM facTC: ${wasmFacTC(5)}`);
 }
 
 main();

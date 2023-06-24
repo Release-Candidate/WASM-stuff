@@ -29,9 +29,10 @@
     },
     "scripts": {
         "clean": "del-cli -- out",
-        "build": "tsc && mkdirp out && wat2wasm --enable-all ./src/test.wat -o out/test.wasm",
-        "optimize": "wasm-opt ./src/test.wat --name-types --all-features -O4 -o out/test.wasm",
+        "build": "tsc && wat2wasm --enable-all ./src/test.wat -o out/test.wasm",
+        "optimize": "mkdirp out && wasm-opt ./src/test.wat --name-types --all-features -O4 -o out/test.wasm",
         "test": "mocha",
-        "run-wasm": "node ./out/src/main.js"
+        "run-wasm": "node --experimental-wasm-return-call ./out/src/main.js",
+        "show-wasm": "wasm2wat out/test.wasm --enable-all --fold-exprs"
     }
 }
