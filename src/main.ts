@@ -27,11 +27,11 @@ export async function main() {
     // eslint-disable-next-line no-unused-vars
     const wasmAdd = wasm.add as (a: number, b: number) => number;
     // eslint-disable-next-line no-magic-numbers
-    console.log(`WASM add: ${wasmAdd(5, 4)}`);
+    console.log(`WASM add(5, 4): ${wasmAdd(5, 4)}`);
     // eslint-disable-next-line no-unused-vars
     const wasmFacTC = wasm.facTC as (a: number) => number;
     // eslint-disable-next-line no-magic-numbers
-    console.log(`WASM facTC: ${wasmFacTC(5)}`);
+    console.log(`WASM facTC(5): ${wasmFacTC(5)}`);
 }
 
 /**
