@@ -3,7 +3,7 @@
         "default": {
             "runner": "nx/tasks-runners/default",
             "options": {
-                "cacheableOperations": ["build"],
+                "cacheableOperations": ["build", "bundle"],
                 "parallel": false
             }
         }
@@ -23,6 +23,17 @@
                 "{projectRoot}/out/src/**/*.js",
                 "{projectRoot}/out/test/**/*.js"
             ]
+        },
+        "bundle": {
+            "dependsOn": ["^bundle"],
+            "inputs": ["src_ts", "^src_ts"],
+            "outputs": [
+                "{projectRoot}/out/script_web.js",
+                "{projectRoot}/out/index.html"
+            ]
+        },
+        "serve": {
+            "dependsOn": ["bundle"]
         },
         "optimize": {
             "dependsOn": ["^optimize"],

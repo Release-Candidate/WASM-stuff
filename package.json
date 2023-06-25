@@ -4,6 +4,7 @@
     "authors": "Roland Csaszar",
     "version": "0.1.0",
     "main": "src/main.ts",
+    "type": "module",
     "devDependencies": {
         "@types/chai": "^4.3.5",
         "@types/glob": "^8.1.0",
@@ -12,8 +13,10 @@
         "@typescript-eslint/eslint-plugin": "^5.60.0",
         "@typescript-eslint/parser": "^5.60.0",
         "chai": "^4.3.7",
+        "copyfiles": "^2.4.1",
         "del-cli": "^5.0.0",
-        "esbuild": "^0.18.6",
+        "esbuild": "^0.18.8",
+        "esbuild-server": "^0.3.0",
         "eslint": "^8.43.0",
         "eslint-plugin-chai-friendly": "^0.7.2",
         "eslint-plugin-jsdoc": "^46.2.6",
@@ -34,14 +37,17 @@
     "scripts": {
         "clean": "del-cli -- out",
         "build": "nx exec -- yarn _build ",
+        "bundle": "nx exec -- yarn _bundle",
         "optimize": "nx exec -- yarn _optimize ",
         "test": "nx exec -- yarn mocha",
         "test-optimized": "nx exec -- yarn mocha",
+        "serve": "nx exec -- yarn node esbuild-serve_config.js",
         "run-wasm": "nx exec -- node --experimental-wasm-return-call --experimental-wasm-memory64 ./out/src/main.js",
         "run-wasmedge": "nx exec -- wasmedge --enable-all --enable-all-statistics ./out/test.wasm",
         "show-wasm": "nx exec -- wasm2wat out/test.wasm --enable-all --fold-exprs",
         "_build": "tsc && wat2wasm --enable-all ./src/test.wat -o out/test.wasm",
-        "_optimize": "mkdirp out && wasm-opt ./src/test.wat --name-types --all-features -O4 -o out/test.wasm"
+        "_optimize": "mkdirp out && wasm-opt ./src/test.wat --name-types --all-features -O4 -o out/test.wasm",
+        "_bundle": "copyfiles -f ./assets/index.html ./out/ && esbuild ./src/main_web.ts --bundle --outfile=out/script_web.js"
     },
     "nx": {}
 }
