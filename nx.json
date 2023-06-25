@@ -1,0 +1,56 @@
+{
+    "tasksRunnerOptions": {
+        "default": {
+            "runner": "nx/tasks-runners/default",
+            "options": {
+                "cacheableOperations": ["build"],
+                "parallel": false
+            }
+        }
+    },
+    "namedInputs": {
+        "src_ts": ["{projectRoot}/src/**/*.ts", "{projectRoot}/tests/**/*.ts"],
+        "src_wasm": ["{projectRoot}/src/**/*.wat"],
+        "bin_wasm": ["{projectRoot}/out/**/*.wasm"],
+        "bin_js": ["{projectRoot}/out/**/*.js"]
+    },
+    "targetDefaults": {
+        "build": {
+            "dependsOn": ["^build"],
+            "inputs": ["src_ts", "src_wasm", "^src_ts", "^src_wasm"],
+            "outputs": [
+                "{projectRoot}/out/**/*.wasm",
+                "{projectRoot}/out/src/**/*.js",
+                "{projectRoot}/out/test/**/*.js"
+            ]
+        },
+        "optimize": {
+            "dependsOn": ["^optimize"],
+            "inputs": ["src_wasm", "^src_wasm"],
+            "outputs": ["{projectRoot}/out/**/*.wasm"]
+        },
+        "test": {
+            "dependsOn": ["build", "^test"],
+            "inputs": ["src_ts", "bin_wasm", "^src_ts", "^bin_wasm"]
+        },
+        "test-optimized": {
+            "dependsOn": ["build", "optimize", "^test-optimized"],
+            "inputs": ["src_ts", "bin_wasm", "^src_ts", "^bin_wasm"]
+        },
+        "run-wasm": {
+            "dependsOn": ["build", "^run-wasm"],
+            "inputs": ["bin_wasm", "bin_js", "^bin_wasm", "^bin_js"]
+        },
+        "run-wasmedge": {
+            "dependsOn": ["build", "^run-wasmedge"],
+            "inputs": ["bin_wasm", "^bin_wasm"]
+        },
+        "show-wasm": {
+            "dependsOn": ["build", "^show-wasm"],
+            "inputs": ["bin_wasm", "^bin_wasm"]
+        }
+    },
+    "affected": {
+        "defaultBase": "main"
+    }
+}

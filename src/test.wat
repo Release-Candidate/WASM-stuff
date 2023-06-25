@@ -39,6 +39,5 @@
 
   (func $main (result i32)
     (call $fac (i32.const 6)))
-
   (export "_start" (func $main))
 )

@@ -22,6 +22,7 @@
         "glob": "^10.3.0",
         "mkdirp": "^3.0.1",
         "mocha": "^10.2.0",
+        "nx": "16.4.0",
         "source-map-support": "^0.5.21",
         "ts-node": "^10.9.1",
         "tsconfig-paths": "^4.2.0",
@@ -32,11 +33,15 @@
     },
     "scripts": {
         "clean": "del-cli -- out",
-        "build": "tsc && wat2wasm --enable-all ./src/test.wat -o out/test.wasm",
-        "optimize": "mkdirp out && wasm-opt ./src/test.wat --name-types --all-features -O4 -o out/test.wasm",
-        "test": "mocha",
-        "run-wasm": "node --experimental-wasm-return-call --experimental-wasm-memory64 ./out/src/main.js",
-        "run-wasmedge": "wasmedge --enable-all --enable-all-statistics --reactor ./out/test.wasm fac 5",
-        "show-wasm": "wasm2wat out/test.wasm --enable-all --fold-exprs"
-    }
+        "build": "nx exec -- yarn _build ",
+        "optimize": "nx exec -- yarn _optimize ",
+        "test": "nx exec -- yarn mocha",
+        "test-optimized": "nx exec -- yarn mocha",
+        "run-wasm": "nx exec -- node --experimental-wasm-return-call --experimental-wasm-memory64 ./out/src/main.js",
+        "run-wasmedge": "nx exec -- wasmedge --enable-all --enable-all-statistics ./out/test.wasm",
+        "show-wasm": "nx exec -- wasm2wat out/test.wasm --enable-all --fold-exprs",
+        "_build": "tsc && wat2wasm --enable-all ./src/test.wat -o out/test.wasm",
+        "_optimize": "mkdirp out && wasm-opt ./src/test.wat --name-types --all-features -O4 -o out/test.wasm"
+    },
+    "nx": {}
 }
