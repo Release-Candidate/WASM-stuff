@@ -4,7 +4,6 @@
     "authors": "Roland Csaszar",
     "version": "0.1.0",
     "main": "src/main.ts",
-    "type": "module",
     "devDependencies": {
         "@types/chai": "^4.3.5",
         "@types/glob": "^8.1.0",

@@ -42,6 +42,18 @@
 			"task": "run-wasmedge",
 			"problemMatcher": [],
 			"label": "yarn: run-wasmedge"
+		},
+		{
+			"type": "yarn",
+			"task": "bundle",
+			"problemMatcher": [],
+			"label": "yarn: bundle"
+		},
+		{
+			"type": "yarn",
+			"task": "serve",
+			"problemMatcher": [],
+			"label": "yarn: serve"
 		}
 	]
 }

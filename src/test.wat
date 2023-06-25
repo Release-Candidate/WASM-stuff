@@ -8,6 +8,7 @@
 ;; ==============================================================================
 
 (module
+  ;; Adds `$a` and `$b`.
   (func $add (param $lhs i32) (param $rhs i32) (result i32)
     (i32.add
       (local.get $lhs)
@@ -15,6 +16,7 @@
 
   (export "add" (func $add))
 
+  ;; Naive factorial implementation.
   (func $fac (param $a i32) (result i32)
     (if (result i32)
       (i32.le_s (local.get $a) (i32.const 1))
@@ -25,6 +27,7 @@
 
   (export "fac" (func $fac))
 
+  ;; Factorial using tail call optimization.
   (func $facTCHelper (param $acc i32) (param $b i32) (result i32)
     (if (result i32)
       (i32.le_s (local.get $b) (i32.const 1))
@@ -37,7 +40,26 @@
     (return_call $facTCHelper (i32.const 1) (local.get $a)))
   (export "facTC" (func $facTC))
 
+  ;; This should not cause a stack overflow, even with _really_ big `$a`s.
+  (func $tcTest (param $a i32) (result i32)
+    (if (result i32)
+      (i32.le_s (local.get $a) (i32.const 1))
+      (then (i32.const 1))
+      (else (return_call $tcTest
+              (i32.sub (local.get $a) (i32.const 1))))))
+  (export "tcTest" (func $tcTest))
+
+  ;; This should cause a stack overflow, if `$a` is large enough.
+  (func $nonTCTest (param $a i32) (result i32)
+    (if (result i32)
+      (i32.le_s (local.get $a) (i32.const 1))
+      (then (i32.const 1))
+      (else (call $nonTCTest
+              (i32.sub (local.get $a) (i32.const 1))))))
+  (export "nonTCTest" (func $nonTCTest))
+
+  ;; WASMEdge calls the function with the exported name `_start` as "main".
   (func $main (result i32)
-    (call $fac (i32.const 6)))
+    (call $tcTest (i32.const 200000)))
   (export "_start" (func $main))
 )

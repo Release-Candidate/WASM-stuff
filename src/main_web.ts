@@ -12,12 +12,12 @@
 /**
  * Loads the WASM object.
  */
+// eslint-disable-next-line max-statements
 async function main() {
     const wasmResp = await fetch("./test.wasm");
     const wasmBuf = await wasmResp.arrayBuffer();
     const wasmMod = await WebAssembly.compile(wasmBuf);
     const wasm = (await WebAssembly.instantiate(wasmMod)).exports;
-
     // eslint-disable-next-line no-unused-vars
     const wasmAdd = wasm.add as (a: number, b: number) => number;
     // eslint-disable-next-line no-unused-vars
@@ -30,6 +30,10 @@ async function main() {
     console.error(`fac(9): ${wasmFac(9)}`);
     // eslint-disable-next-line no-magic-numbers
     console.error(`facTC(8): ${wasmFacTC(8)}`);
+    // eslint-disable-next-line no-unused-vars
+    const wasmTCTest = wasm.tcTest as (a: number) => number;
+    // eslint-disable-next-line no-magic-numbers
+    console.error(`WASM TC Test (200000): ${wasmTCTest(200000)}`);
 }
 
 main();

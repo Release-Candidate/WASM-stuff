@@ -9,7 +9,11 @@
         }
     },
     "namedInputs": {
-        "src_ts": ["{projectRoot}/src/**/*.ts", "{projectRoot}/tests/**/*.ts"],
+        "src_ts": [
+            "{projectRoot}/src/**/*.ts",
+            "{projectRoot}/tests/**/*.ts",
+            "{projectRoot}/tsconfig.json"
+        ],
         "src_wasm": ["{projectRoot}/src/**/*.wat"],
         "bin_wasm": ["{projectRoot}/out/**/*.wasm"],
         "bin_js": ["{projectRoot}/out/**/*.js"]

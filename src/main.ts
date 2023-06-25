@@ -18,6 +18,7 @@ import * as wasc from "wasm-check";
 /**
  * Main entry point.
  */
+// eslint-disable-next-line max-statements
 export async function main() {
     checkWasmFeatures();
     const wasmModule = await WebAssembly.compile(
@@ -32,6 +33,18 @@ export async function main() {
     const wasmFacTC = wasm.facTC as (a: number) => number;
     // eslint-disable-next-line no-magic-numbers
     console.log(`WASM facTC(5): ${wasmFacTC(5)}`);
+    // eslint-disable-next-line no-unused-vars
+    const wasmTCTest = wasm.tcTest as (a: number) => number;
+    // eslint-disable-next-line no-magic-numbers
+    console.log(`WASM TC Test (200000): ${wasmTCTest(200000)}`);
+    // eslint-disable-next-line no-unused-vars
+    const wasmNonTCTest = wasm.nonTCTest as (a: number) => number;
+    console.log(
+        `WASM Non TC Test - Stack Overflow if 200000: (2000): ${wasmNonTCTest(
+            // eslint-disable-next-line no-magic-numbers
+            2000
+        )}`
+    );
 }
 
 /**

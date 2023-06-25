@@ -8,8 +8,8 @@
  *
  * ==============================================================================
  */
-import * as esS from "esbuild-server";
-import * as fs from "node:fs";
+const esS = require("esbuild-server");
+const fs = require("node:fs");
 
 esS.createServer(
     {
