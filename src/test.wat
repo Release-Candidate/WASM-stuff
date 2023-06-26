@@ -58,12 +58,22 @@
               (i32.sub (local.get $a) (i32.const 1))))))
   (export "nonTCTest" (func $nonTCTest))
 
-  ;; Test WASM GC.
-  (type $testStruct (struct (field $first i64) (field $foo f32) (field $baz f64)))
+  ;; Test WASM GC. =============================================================
 
-  (func $mkTestStruct (param $a i64) (param $b f32) (param $c f64) (result (ref $testStruct))
-    (struct.new $testStruct (local.get $a) (local.get $b) (local.get $c)))
+  ;; A `struct` with 3 fields, all immutable.
+  (type $testStruct
+    (struct
+      (field $first i64)
+      (field $foo f32)
+      (field $baz f64)))
+
+  ;; Constructor.
+  (func $mkTestStruct
+    (param $a i64) (param $b f32) (param $c f64) (result (ref $testStruct))
+      (struct.new $testStruct (local.get $a) (local.get $b) (local.get $c)))
   (export "mkTestStruct" (func $mkTestStruct))
+
+  ;; Getter function for the three fields:
 
   (func $getTestStruct1 (param $rs (ref $testStruct)) (result i64)
     (struct.get $testStruct 0 (local.get $rs)))
@@ -76,6 +86,16 @@
   (func $getTestStruct3 (param $rs (ref $testStruct)) (result f64)
     (struct.get $testStruct 2 (local.get $rs)))
   (export "getTestStruct3" (func $getTestStruct3))
+
+  ;; An immutable array.
+
+
+  ;; A linked list.
+  (type $list (struct (field $value i32) (field $next (ref null $list))))
+
+  (func $mkListTest (param $v i32) (result (ref $list))
+    (struct.new $list (local.get $v) (ref.null $list)))
+  (export "mkListTest" (func $mkListTest))
 
   ;; WASMEdge calls the function with the exported name `_start` as "main".
   (func $main (result i32)

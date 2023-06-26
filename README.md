@@ -6,6 +6,7 @@
 - [WASM Runtimes and Their Features](#wasm-runtimes-and-their-features)
 - [WASM Features](#wasm-features)
   - [Tail Calls](#tail-calls)
+  - [Typed Function References](#typed-function-references)
   - [GC](#gc)
   - [64 Bit Memory](#64-bit-memory)
   - [Threads](#threads)
@@ -39,6 +40,11 @@ Sadly not up-to-date/wrong.
 - Node: flag `--experimental-wasm-return-call` (not necessary any more)
 - Deno: flag `--v8-flags=--experimental-wasm-extended-const`
 - WASMEdge: option `--enable-tail-call`
+
+### Typed Function References
+
+Chrome: supported.
+Node: supported.
 
 ### GC
 
