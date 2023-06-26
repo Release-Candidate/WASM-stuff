@@ -48,5 +48,6 @@
         "_optimize": "mkdirp out && wasm-opt ./src/test.wat --name-types --all-features -O4 -o out/test.wasm",
         "_bundle": "copyfiles -f ./assets/index.html ./out/ && esbuild ./src/main_web.ts --bundle --outfile=out/script_web.js"
     },
-    "nx": {}
+    "nx": {},
+    "packageManager": "yarn@3.6.0"
 }
