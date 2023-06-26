@@ -37,6 +37,28 @@ export async function main() {
     const wasmTCTest = wasm.tcTest as (a: number) => number;
     // eslint-disable-next-line no-magic-numbers
     console.log(`WASM TC Test (200000): ${wasmTCTest(200000)}`);
+    const wasmMkTestStruct = wasm.mkTestStruct as (
+        // eslint-disable-next-line no-unused-vars
+        a: BigInt,
+        // eslint-disable-next-line no-unused-vars
+        b: number,
+        // eslint-disable-next-line no-unused-vars
+        c: number
+    ) => {};
+    // eslint-disable-next-line no-unused-vars
+    const wasmTestStructField1 = wasm.getTestStruct1 as (struct: {}) => BigInt;
+    // eslint-disable-next-line no-unused-vars
+    const wasmTestStructField2 = wasm.getTestStruct2 as (struct: {}) => number;
+    // eslint-disable-next-line no-unused-vars
+    const wasmTestStructField3 = wasm.getTestStruct3 as (struct: {}) => number;
+    // eslint-disable-next-line no-magic-numbers
+    const wasmObject = wasmMkTestStruct(BigInt(15), 16, 17);
+    // eslint-disable-next-line no-magic-numbers
+    console.log(`WASM struct field 1: ${wasmTestStructField1(wasmObject)}`);
+    // eslint-disable-next-line no-magic-numbers
+    console.log(`WASM struct field 2: ${wasmTestStructField2(wasmObject)}`);
+    // eslint-disable-next-line no-magic-numbers
+    console.log(`WASM struct field 3: ${wasmTestStructField3(wasmObject)}`);
     // eslint-disable-next-line no-unused-vars
     const wasmNonTCTest = wasm.nonTCTest as (a: number) => number;
     console.log(

@@ -58,6 +58,25 @@
               (i32.sub (local.get $a) (i32.const 1))))))
   (export "nonTCTest" (func $nonTCTest))
 
+  ;; Test WASM GC.
+  (type $testStruct (struct (field $first i64) (field $foo f32) (field $baz f64)))
+
+  (func $mkTestStruct (param $a i64) (param $b f32) (param $c f64) (result (ref $testStruct))
+    (struct.new $testStruct (local.get $a) (local.get $b) (local.get $c)))
+  (export "mkTestStruct" (func $mkTestStruct))
+
+  (func $getTestStruct1 (param $rs (ref $testStruct)) (result i64)
+    (struct.get $testStruct 0 (local.get $rs)))
+  (export "getTestStruct1" (func $getTestStruct1))
+
+  (func $getTestStruct2 (param $rs (ref $testStruct)) (result f32)
+    (struct.get $testStruct 1 (local.get $rs)))
+  (export "getTestStruct2" (func $getTestStruct2))
+
+  (func $getTestStruct3 (param $rs (ref $testStruct)) (result f64)
+    (struct.get $testStruct 2 (local.get $rs)))
+  (export "getTestStruct3" (func $getTestStruct3))
+
   ;; WASMEdge calls the function with the exported name `_start` as "main".
   (func $main (result i32)
     (call $tcTest (i32.const 200000)))

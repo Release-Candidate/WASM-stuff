@@ -25,6 +25,7 @@
 ## WASM Runtimes and Their Features
 
 Official WASM site with features of the main implementations: [Roadmap](https://webassembly.org/roadmap/).
+Sadly not up-to-date/wrong.
 
 - [WASMEdge](https://wasmedge.org/docs/develop/wasmedge/extensions/proposals) and [Proprietary Extensions](https://wasmedge.org/docs/develop/wasmedge/extensions/unique_extensions)
 - [WASMer](https://docs.wasmer.io/runtime/features#webassembly-features)
@@ -41,7 +42,11 @@ Official WASM site with features of the main implementations: [Roadmap](https://
 
 ### GC
 
+`wat2wasm`  version 1.0.33 does not know of `struct.new`, even with `--enable-all` or `--enable-gc`.
+`wasm-opt` version 113 can handle it with `--all-features`.
+
 - Chrome: option `chrome://flags/#enable-webassembly-garbage-collection`
+- Node: flag `--experimental-wasm-gc`
 
 ### 64 Bit Memory
 
