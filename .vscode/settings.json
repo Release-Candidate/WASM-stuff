@@ -1,0 +1,7 @@
+{
+    "mochaExplorer.nodeArgv": [
+        "--experimental-wasm-return-call",
+        "--experimental-wasm-memory64",
+        "--experimental-wasm-gc"
+    ]
+}

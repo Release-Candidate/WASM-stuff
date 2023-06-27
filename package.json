@@ -38,7 +38,7 @@
         "build": "nx exec -- yarn _build ",
         "bundle": "nx exec -- yarn _bundle",
         "optimize": "nx exec -- yarn _optimize ",
-        "test": "nx exec -- yarn mocha",
+        "test": "nx exec -- node --experimental-wasm-gc --experimental-wasm-return-call --experimental-wasm-memory64 ./node_modules/mocha/bin/_mocha \"tests/**/*_test.ts\"",
         "test-optimized": "nx exec -- yarn mocha",
         "serve": "nx exec -- yarn node esbuild-serve_config.js",
         "run-wasm": "nx exec -- node --experimental-wasm-return-call --experimental-wasm-memory64 --experimental-wasm-gc ./out/src/main.js",
