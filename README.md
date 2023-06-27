@@ -3,6 +3,7 @@
  Playing around with WebAssembly textual representation (Webassembly assembler).
 
 - [Dependencies](#dependencies)
+  - [WABT: missing features as of 1.0.33](#wabt-missing-features-as-of-1033)
 - [WASM Runtimes and Their Features](#wasm-runtimes-and-their-features)
 - [WASM Features](#wasm-features)
   - [Tail Calls](#tail-calls)
@@ -19,9 +20,17 @@
 
 ## Dependencies
 
-- [WABT](https://github.com/WebAssembly/wabt) - `wat2wasm` to compile WAT (WASM textual representation) to binary WASM files. `wasm2wat` to disassemble binary WASM files (`.wasm`) to text format (`.wat`).
-- [Binaryen](https://github.com/WebAssembly/binaryen) - `wasm-opt` to optimize the generated binary WASM file. `wasm-merge` to merge WASM files into a single one.
+- [Binaryen](https://github.com/WebAssembly/binaryen)
+  - `wasm-opt` to compile a WAT to binary WASM and to optimize the generated binary WASM file.
+  - `wasm-dis` - to convert a binary WASM file into textual format (WAT).
+  - `wasm-merge` to merge WASM files into a single one.
 - [WASMEdge](https://github.com/WasmEdge/WasmEdge)
+
+### WABT: missing features as of 1.0.33
+
+WABT version 1.0.33 misses features, mainly GC isn't fully supported.
+
+- [WABT](https://github.com/WebAssembly/wabt) - `wat2wasm` to compile WAT (WASM textual representation) to binary WASM files. `wasm2wat` to disassemble binary WASM files (`.wasm`) to text format (`.wat`).
 
 ## WASM Runtimes and Their Features
 

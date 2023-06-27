@@ -43,7 +43,7 @@
         "serve": "nx exec -- yarn node esbuild-serve_config.js",
         "run-wasm": "nx exec -- node --experimental-wasm-return-call --experimental-wasm-memory64 --experimental-wasm-gc ./out/src/main.js",
         "run-wasmedge": "nx exec -- wasmedge --enable-all --enable-all-statistics ./out/test.wasm",
-        "show-wasm": "nx exec -- wasm2wat out/test.wasm --enable-all --fold-exprs",
+        "show-wasm": "nx exec -- wasm-dis --all-features out/test.wasm",
         "_build": "tsc && wasm-opt ./src/test.wat --name-types --all-features -O0 -o out/test.wasm",
         "_optimize": "mkdirp out && wasm-opt ./src/test.wat --name-types --all-features -O4 -o out/test.wasm",
         "_bundle": "copyfiles -f ./assets/index.html ./out/ && esbuild ./src/main_web.ts --bundle --outfile=out/script_web.js"
