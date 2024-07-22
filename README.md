@@ -1,3 +1,6 @@
+> [!WARNING]
+> This repository has been moved to [Codeberg: codeberg.org/Release-Candidate/WASM-stuff](https://codeberg.org/Release-Candidate/WASM-stuff)
+
 # WASM-stuff
 
  Playing around with WebAssembly textual representation (Webassembly assembler).
